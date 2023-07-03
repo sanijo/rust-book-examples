@@ -1,0 +1,20 @@
+# basic gitignore file
+# Rust artifacts
+target/
+
+# Generated documentation
+/doc/
+
+# Cargo lock file
+Cargo.lock
+
+# Build output
+build/
+
+# Ignore main binary files in all directories and subdirectories
+**/main
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
