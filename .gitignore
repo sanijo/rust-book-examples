@@ -5,9 +5,6 @@ target/
 # Generated documentation
 /doc/
 
-# Cargo lock file
-Cargo.lock
-
 # Build output
 build/
 
