@@ -32,9 +32,36 @@ fn main() {
     let s_len1 = str::len(&s); // explicit dereferencing
     let s_len2 = s.len(); // implicit dereferencing
 
-    let x = Box::new(-1);
+    let x = Box::new(1);
     let y = Box::new(&x);
     // get value of x through y
     let y_x_e = ***y; // explicit dereferencing
     println!("y_x_e = {}", y_x_e);
+
+    let mut vec: Vec<i32> = vec![1, 2, 3];
+    let num: &i32 = &vec[2]; // num = &3, creates a reference to the third element of vec
+    println!("num = {}", *num); // num = &3, still points to the old allocation
+    vec.push(4); // create new allocation with larger capacity, copy elements, and free old allocation
+
+    // Pointer Safety Principle: data should never be aliased and mutated at the same time.
+    // Creating a refference to data (borrowing) causes the data to be temporarily
+    // read-only until the reference is no longer used.
+//    let mut x = 1;
+//    let r1 = &x;
+//
+//    *r1 = 2; // error: cannot assign to immutable borrowed content `*r1`
+    let mut x = 1;
+    let r1 = &mut x; // r1 = &mut 1, creates a mutable reference to x on the stack
+
+    println!("r1 = {}", *r1); // r1 = &mut 2, increments x through dereferenced pointer
+    *r1 += 1; 
+    println!("r1 = {}", *r1); // r1 = &mut 2, increments x through dereferenced pointer
+
+    let mut x = 1;
+    let y = &x;
+    let z = *y;
+
+    x += z; // x = 2, increments x through dereferenced pointer
+    println!("x = {x}, z = {z}");
+
 }
