@@ -43,6 +43,7 @@ fn stringify_name_with_title(name: &Vec::<String>) -> String {
 fn main() {
     let name = vec![String::from("John"), String::from("Doe")];
     let first = &name[0];
-    stringify_name_with_title(&name);
+//    stringify_name_with_title(&name);
+    let _stringified = stringify_name_with_title(&name);
     println!("{first}");
 }

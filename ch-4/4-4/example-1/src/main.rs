@@ -34,6 +34,32 @@ fn first_word_string_slice(s: &str) -> &str {
     &s[..] // return the whole string
 }
 
+fn second_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    let mut first_space_index = 0;
+    let mut second_space_index = 0;
+
+    for (i, &item) in bytes.iter().enumerate() { // iter() returns each element in a collection
+        if item == b' ' { // b' ' is a byte literal
+            if first_space_index == 0 {
+                first_space_index = i;
+            } else {
+                second_space_index = i;
+                break;
+            }
+        }
+    }
+
+    if first_space_index == 0 {
+        &s[..]
+    } else if second_space_index == 0 {
+        &s[first_space_index+1..]
+    } else {
+        &s[first_space_index+1..second_space_index]
+    }
+}
+
 fn main() {
 //    let mut s = String::from("hello world");
 //    let word = first_word(&s); 
@@ -56,6 +82,12 @@ fn main() {
     let s = String::from("And some words are here"); 
     let word = first_word_string_slice(&s[4..]);
     println!("the first word is: {}", word);
+
+    let s = String::from("First Second"); 
+    let word = first_word_string_slice(&s);
+    println!("the first word is: {}", word);
+    let second_word = second_word(&s);
+    println!("the second word is: {}", second_word);
 
     let s = "Same situation here"; // string literal is a slice
     let word = first_word_string_slice(s);

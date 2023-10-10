@@ -24,7 +24,7 @@ fn main() {
     let words = vec!["Hello".to_string()];
     let d = new_document(words);
 
-    // .to_vev() converts &[String] to Vec<String> by cloning each element.
+    // .to_vec() converts &[String] to Vec<String> by cloning each element.
     let words_deep_copy = get_words(&d).to_vec();
     let mut d2 = new_document(words_deep_copy);
 

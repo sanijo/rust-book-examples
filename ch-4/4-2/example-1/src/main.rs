@@ -12,7 +12,6 @@ fn main() {
 //    greet(m1, m2);
 //    let s = format!("{} {}!", m1, m2); // won't work because m1 and m2 are 
                                          // moved to greet function
-
     greet(&m1, &m2);
     let s = format!("{} {}!", m1, m2);
     println!("{}", s);

@@ -8,7 +8,7 @@
 //    &s
 //}
 
-// Solution 1: return the String itself
+// Solution 1: return the String itself (move ownership)
 //fn return_string() -> String {
 //    let s = String::from("hello");
 //    s
